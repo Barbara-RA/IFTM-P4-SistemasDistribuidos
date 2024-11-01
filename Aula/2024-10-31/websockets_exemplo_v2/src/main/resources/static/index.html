@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Teste de WebSocket</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Lado esquerdo: Funcionalidade -->
+        <div class="left-panel">
+            <h1>Teste de WebSocket</h1>
+            <div id="output"></div>
+            <input type="text" id="messageInput" placeholder="Digite uma mensagem...">
+            <div class="button-group">
+                <button onclick="sendMessage()">Enviar</button>
+                <button onclick="closeConnection()">Fechar Conexão</button>
+            </div>
+        </div>
+
+        <!-- Lado direito: Imagem -->
+        <div class="right-panel">
+            <img src="img/Captura de tela 2024-10-31 213546.png" alt="Imagem Futurística">
+        </div>
+    </div>
+
+    <script>
+        const outputDiv = document.getElementById("output");
+        const messageInput = document.getElementById("messageInput");
+
+        function displayMessage(message) {
+            const p = document.createElement("p");
+            p.textContent = message;
+            outputDiv.appendChild(p);
+            outputDiv.scrollTop = outputDiv.scrollHeight; // Scroll automático para a última mensagem
+        }
+
+        const socket = new WebSocket("ws://localhost:8080/ws");
+
+        socket.onopen = () => {
+            displayMessage("Conectado ao WebSocket");
+        };
+
+        socket.onmessage = (event) => {
+            displayMessage("Mensagem recebida do servidor: " + event.data);
+        };
+
+        socket.onclose = () => {
+            displayMessage("Conexão WebSocket fechada");
+        };
+
+        function sendMessage() {
+            const message = messageInput.value;
+            if (message && socket.readyState === WebSocket.OPEN) {
+                socket.send(message);
+                displayMessage("Você: " + message);
+                messageInput.value = "";
+            } else if (socket.readyState !== WebSocket.OPEN) {
+                displayMessage("Conexão não está aberta.");
+            }
+        }
+
+        function closeConnection() {
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.close();
+            } else {
+                displayMessage("Conexão já está fechada.");
+            }
+        }
+    </script>
+</body>
+</html>

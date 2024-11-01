@@ -1,0 +1,140 @@
+/* Corpo geral */
+body {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Painel esquerdo (funcionalidade) */
+.left-panel {
+    background-color: #27293d;
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* Título */
+.left-panel h1 {
+    color: #b18ff8;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+/* Div de saída */
+#output {
+    background-color: #33334d;
+    border-radius: 6px;
+    padding: 15px;
+    width: 100%;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilo das mensagens */
+#output p {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+    position: relative;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow-wrap: break-word;
+    max-width: 90%;
+}
+
+/* Diferenciação das mensagens */
+.server-message {
+    align-self: flex-start;
+    background-color: rgba(63, 58, 96, 0.2);
+}
+
+.client-message {
+    align-self: flex-end;
+    background-color: rgba(78, 58, 142, 0.2);
+}
+
+/* Input de mensagem */
+input[type="text"] {
+    background-color: #33334d;
+    border: none;
+    border-radius: 5px;
+    color: #e0e0e0;
+    font-size: 0.9em;
+    padding: 8px 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Grupo de botões */
+.button-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Botões */
+button {
+    background: linear-gradient(145deg, #5c2a91, #48217a);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.9em;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #48217a, #5c2a91);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Painel direito (imagem) */
+.right-panel {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a2e;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.right-panel img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(114, 9, 183, 0.4);
+}
