@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package br.edu.iftm.tspi.sd.grpc;
+
+message Cliente {
+    int32 id = 1;
+    string nome = 2;
+}
+
+message ClienteRequest {
+    int32 id = 1;
+}
+
+message ClientePorNomeRequest {
+    string nome = 1;
+}
+
+message ClienteResponse {
+    Cliente cliente = 1;
+}
+
+message ListaClientesResponse {
+    repeated Cliente clientes = 1;
+}
+
+service ClienteService {
+    rpc buscarClientePorId (ClienteRequest) returns (ClienteResponse);
+    rpc buscarClientesPorNome (ClientePorNomeRequest) returns (ListaClientesResponse);
+}

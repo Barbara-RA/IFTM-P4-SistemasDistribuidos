@@ -1,0 +1,7 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "target/generated-sources/protobuf/java", // Diretório para código Protobuf (Maven)
+        "target/generated-sources/protobuf/grpc-java" // Diretório para código gRPC (Maven)
+}
